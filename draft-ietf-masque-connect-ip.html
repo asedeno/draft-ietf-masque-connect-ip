@@ -16,6 +16,16 @@ protocol is similar to CONNECT-UDP, but allows transmitting arbitrary IP
 packets, without being limited to just TCP like CONNECT or UDP like CONNECT-UDP. 
     " name="description">
 <meta content="xml2rfc 3.12.3" name="generator">
+<meta content="quic" name="keyword">
+<meta content="http" name="keyword">
+<meta content="datagram" name="keyword">
+<meta content="VPN" name="keyword">
+<meta content="proxy" name="keyword">
+<meta content="tunnels" name="keyword">
+<meta content="quic in udp in IP in quic" name="keyword">
+<meta content="turtles all the way down" name="keyword">
+<meta content="masque" name="keyword">
+<meta content="http-ng" name="keyword">
 <meta content="draft-ietf-masque-connect-ip-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.12.3
@@ -1018,11 +1028,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">HTTP IP Proxy</td>
-<td class="right">March 2022</td>
+<td class="right">April 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Pauly, et al.</td>
-<td class="center">Expires 2 September 2022</td>
+<td class="center">Expires 4 October 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1035,12 +1045,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-ietf-masque-connect-ip-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-01" class="published">1 March 2022</time>
+<time datetime="2022-04-02" class="published">2 April 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-02">2 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-10-04">4 October 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1075,15 +1085,19 @@ protocol is similar to CONNECT-UDP, but allows transmitting arbitrary IP
 packets, without being limited to just TCP like CONNECT or UDP like CONNECT-UDP.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
-      <h2 id="name-discussion-venues">
-<a href="#name-discussion-venues" class="section-name selfRef">Discussion Venues</a>
+      <h2 id="name-about-this-document">
+<a href="#name-about-this-document" class="section-name selfRef">About This Document</a>
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
-<p id="section-note.1-2">Discussion of this document takes place on the
-    Multiplexed Application Substrate over QUIC Encryption Working Group mailing list (masque@ietf.org),
-    which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/masque/">https://mailarchive.ietf.org/arch/browse/masque/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
-<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
-    <span><a href="https://github.com/tfpauly/draft-age-masque-connect-ip">https://github.com/tfpauly/draft-age-masque-connect-ip</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">
+        The latest revision of this draft can be found at <span><a href="https://ietf-wg-masque.github.io/draft-ietf-masque-connect-ip/draft-ietf-masque-connect-ip.html">https://ietf-wg-masque.github.io/draft-ietf-masque-connect-ip/draft-ietf-masque-connect-ip.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-ietf-masque-connect-ip/">https://datatracker.ietf.org/doc/draft-ietf-masque-connect-ip/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">
+        Discussion of this document takes place on the
+        MASQUE Working Group mailing list (<span><a href="mailto:masque@ietf.org">mailto:masque@ietf.org</a></span>),
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/masque/">https://mailarchive.ietf.org/arch/browse/masque/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+<p id="section-note.1-4">Source for this draft and an issue tracker can be found at
+        <span><a href="https://github.com/ietf-wg-masque/draft-ietf-masque-connect-ip">https://github.com/ietf-wg-masque/draft-ietf-masque-connect-ip</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1104,7 +1118,7 @@ packets, without being limited to just TCP like CONNECT or UDP like CONNECT-UDP.
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 October 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1227,10 +1241,10 @@ packets, without being limited to just TCP like CONNECT or UDP like CONNECT-UDP.
 <p id="section-1-1">This document describes a method of proxying IP packets over HTTP. When using
 HTTP/2 or HTTP/3, IP proxying uses HTTP Extended CONNECT as described in
 <span>[<a href="#EXT-CONNECT2" class="xref">EXT-CONNECT2</a>]</span> and <span>[<a href="#EXT-CONNECT3" class="xref">EXT-CONNECT3</a>]</span>.
-When using HTTP/1.x, IP proxying uses HTTP Upgrade as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-7.8" class="relref">Section 7.8</a> of [<a href="#SEMANTICS" class="xref">SEMANTICS</a>]</span>. This protocol is similar to CONNECT-UDP
-<span>[<a href="#CONNECT-UDP" class="xref">CONNECT-UDP</a>]</span>, but allows transmitting arbitrary
-IP packets, without being limited to just TCP like CONNECT <span>[<a href="#SEMANTICS" class="xref">SEMANTICS</a>]</span> or UDP
-like CONNECT-UDP.<a href="#section-1-1" class="pilcrow">¶</a></p>
+When using HTTP/1.x, IP proxying uses HTTP Upgrade as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-7.8" class="relref">Section 7.8</a> of [<a href="#SEMANTICS" class="xref">SEMANTICS</a>]</span>. This protocol is similar to
+CONNECT-UDP <span>[<a href="#CONNECT-UDP" class="xref">CONNECT-UDP</a>]</span>, but allows
+transmitting arbitrary IP packets, without being limited to just TCP like
+CONNECT <span>[<a href="#SEMANTICS" class="xref">SEMANTICS</a>]</span> or UDP like CONNECT-UDP.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">The HTTP Upgrade Token defined for this mechanism is "connect-ip", which is
 also referred to as CONNECT-IP in this document.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">The CONNECT-IP protocol allows endpoints to set up a tunnel for proxying IP
@@ -1246,10 +1260,10 @@ support <span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>.<a href
       <h2 id="name-conventions-and-definitions">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
       </h2>
-<p id="section-2-1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span>
-when, and only when, they appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
+described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they
+appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">In this document, we use the term "proxy" to refer to the HTTP server that
 responds to the CONNECT-IP request. If there are HTTP intermediaries (as
 defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-3.7" class="relref">Section 3.7</a> of [<a href="#SEMANTICS" class="xref">SEMANTICS</a>]</span>) between the client and the proxy,
@@ -1262,7 +1276,7 @@ those are referred to as "intermediaries" in this document.<a href="#section-2-2
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-configuration-of-clients" class="section-name selfRef">Configuration of Clients</a>
       </h2>
 <p id="section-3-1">Clients are configured to use IP Proxying over HTTP via an URI Template
-<span>[<a href="#TEMPLATE" class="xref">TEMPLATE</a>]</span>. The URI template MAY contain two variables: "target" and
+<span>[<a href="#TEMPLATE" class="xref">TEMPLATE</a>]</span>. The URI template <span class="bcp14">MAY</span> contain two variables: "target" and
 "ip_proto". Examples are shown below:<a href="#section-3-1" class="pilcrow">¶</a></p>
 <span id="name-uri-template-examples"></span><div id="fig-template-examples">
 <figure id="figure-1">
@@ -1287,30 +1301,30 @@ https://masque.example.org/?user=bob
       </h2>
 <p id="section-4-1">This document defines the "connect-ip" HTTP Upgrade Token. "connect-ip" uses
 the Capsule Protocol as defined in <span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">When sending its IP proxying request, the client SHALL perform URI template
+<p id="section-4-2">When sending its IP proxying request, the client <span class="bcp14">SHALL</span> perform URI template
 expansion to determine the path and query of its request, see <a href="#client-config" class="xref">Section 3</a>.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">When using HTTP/2 or HTTP/3, the following requirements apply to requests:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4-4.1">The ":method" pseudo-header field SHALL be set to "CONNECT".<a href="#section-4-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-4-4.1">The ":method" pseudo-header field <span class="bcp14">SHALL</span> be set to "CONNECT".<a href="#section-4-4.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-4-4.2">The ":protocol" pseudo-header field SHALL be set to "connect-ip".<a href="#section-4-4.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-4.2">The ":protocol" pseudo-header field <span class="bcp14">SHALL</span> be set to "connect-ip".<a href="#section-4-4.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-4-4.3">The ":authority" pseudo-header field SHALL contain the host and port of the
+        <li class="normal" id="section-4-4.3">The ":authority" pseudo-header field <span class="bcp14">SHALL</span> contain the host and port of the
 proxy, not an individual endpoint with which a connection is desired.<a href="#section-4-4.3" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-4-4.4">The contents of the ":path" pseudo-header SHALL be determined by the URI
+        <li class="normal" id="section-4-4.4">The contents of the ":path" pseudo-header <span class="bcp14">SHALL</span> be determined by the URI
 template expansion, see <a href="#client-config" class="xref">Section 3</a>. Variables in the URI template can
 determine the scope of the request, such as requesting full-tunnel IP packet
 forwarding, or a specific proxied flow, see <a href="#scope" class="xref">Section 4.1</a>.<a href="#section-4-4.4" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-4-5">The client SHOULD also include the "Capsule-Protocol" header with a value of "?1"
+<p id="section-4-5">The client <span class="bcp14">SHOULD</span> also include the "Capsule-Protocol" header with a value of "?1"
 to negotiate support for sending and receiving HTTP capsules (<span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>).<a href="#section-4-5" class="pilcrow">¶</a></p>
 <p id="section-4-6">Any 2xx (Successful) response indicates that the proxy is willing to open an IP
 forwarding tunnel between it and the client. Any response other than a
 successful response indicates that the tunnel has not been formed.<a href="#section-4-6" class="pilcrow">¶</a></p>
-<p id="section-4-7">A proxy MUST NOT send any Transfer-Encoding or Content-Length header fields in
-a 2xx (Successful) response to the IP Proxying request. A client MUST treat a
+<p id="section-4-7">A proxy <span class="bcp14">MUST NOT</span> send any Transfer-Encoding or Content-Length header fields in
+a 2xx (Successful) response to the IP Proxying request. A client <span class="bcp14">MUST</span> treat a
 successful response containing any Content-Length or Transfer-Encoding header
 fields as malformed.<a href="#section-4-7" class="pilcrow">¶</a></p>
 <p id="section-4-8">The lifetime of the forwarding tunnel is tied to the CONNECT stream. Closing
@@ -1337,7 +1351,7 @@ and/or different protocols.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 scope of the request for packet proxying. All variables defined here are
 optional, and have default values if not included.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.1-3">The defined variables are:<a href="#section-4.1-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-4.1-4">
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-4.1-4">
           <dt id="section-4.1-4.1">target:</dt>
           <dd style="margin-left: 1.5em" id="section-4.1-4.2">
             <p id="section-4.1-4.2.1">The variable "target" contains a hostname or IP address of a specific host to
@@ -1345,7 +1359,7 @@ which the client wants to proxy packets. If the "target" variable is not
 specified, the client is requesting to communicate with any allowable host. If
 the target is an IP address, the request will only support a single IP version.
 If the target is a hostname, the server is expected to perform DNS resolution
-to determine which route(s) to advertise to the client. The server SHOULD
+to determine which route(s) to advertise to the client. The server <span class="bcp14">SHOULD</span>
 send a ROUTE_ADVERTISEMENT capsule that includes routes for all usable
 resolved addresses for the requested hostname.<a href="#section-4.1-4.2.1" class="pilcrow">¶</a></p>
 </dd>
@@ -1368,7 +1382,7 @@ use any IP protocol.<a href="#section-4.1-4.4.1" class="pilcrow">¶</a></p>
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-capsules" class="section-name selfRef">Capsules</a>
         </h3>
 <p id="section-4.2-1">This document defines multiple new capsule types that allow endpoints to
-exchange IP configuration information. Both endpoints MAY send any number of
+exchange IP configuration information. Both endpoints <span class="bcp14">MAY</span> send any number of
 these new capsules.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <div id="addressassign-capsule">
 <section id="section-4.2.1">
@@ -1397,23 +1411,23 @@ ADDRESS_ASSIGN Capsule {
 <a href="#name-address_assign-capsule-form" class="selfRef">ADDRESS_ASSIGN Capsule Format</a>
             </figcaption></figure>
 </div>
-<span class="break"></span><dl class="dlParallel" id="section-4.2.1-3">
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-4.2.1-3">
             <dt id="section-4.2.1-3.1">IP Version:</dt>
             <dd style="margin-left: 1.5em" id="section-4.2.1-3.2">
-              <p id="section-4.2.1-3.2.1">IP Version of this address assignment. MUST be either 4 or 6.<a href="#section-4.2.1-3.2.1" class="pilcrow">¶</a></p>
+              <p id="section-4.2.1-3.2.1">IP Version of this address assignment. <span class="bcp14">MUST</span> be either 4 or 6.<a href="#section-4.2.1-3.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-4.2.1-3.3">IP Address:</dt>
             <dd style="margin-left: 1.5em" id="section-4.2.1-3.4">
               <p id="section-4.2.1-3.4.1">Assigned IP address. If the IP Version field has value 4, the IP Address
-field SHALL have a length of 32 bits. If the IP Version field has value 6, the
-IP Address field SHALL have a length of 128 bits.<a href="#section-4.2.1-3.4.1" class="pilcrow">¶</a></p>
+field <span class="bcp14">SHALL</span> have a length of 32 bits. If the IP Version field has value 6, the
+IP Address field <span class="bcp14">SHALL</span> have a length of 128 bits.<a href="#section-4.2.1-3.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-4.2.1-3.5">IP Prefix Length:</dt>
             <dd style="margin-left: 1.5em" id="section-4.2.1-3.6">
               <p id="section-4.2.1-3.6.1">The number of bits in the IP Address that are used to define the prefix that
-is being assigned. This MUST be less than or equal to the length of the IP
+is being assigned. This <span class="bcp14">MUST</span> be less than or equal to the length of the IP
 Address field, in bits. If the prefix length is equal to the length of the IP
 Address, the receiver of this capsule is only allowed to send packets from a
 single source address. If the prefix length is less than the length of the IP
@@ -1455,27 +1469,27 @@ ADDRESS_REQUEST Capsule {
 <a href="#name-address_request-capsule-for" class="selfRef">ADDRESS_REQUEST Capsule Format</a>
             </figcaption></figure>
 </div>
-<span class="break"></span><dl class="dlParallel" id="section-4.2.2-3">
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-4.2.2-3">
             <dt id="section-4.2.2-3.1">IP Version:</dt>
             <dd style="margin-left: 1.5em" id="section-4.2.2-3.2">
-              <p id="section-4.2.2-3.2.1">IP Version of this address request. MUST be either 4 or 6.<a href="#section-4.2.2-3.2.1" class="pilcrow">¶</a></p>
+              <p id="section-4.2.2-3.2.1">IP Version of this address request. <span class="bcp14">MUST</span> be either 4 or 6.<a href="#section-4.2.2-3.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-4.2.2-3.3">IP Address:</dt>
             <dd style="margin-left: 1.5em" id="section-4.2.2-3.4">
               <p id="section-4.2.2-3.4.1">Requested IP address. If the IP Version field has value 4, the IP Address
-field SHALL have a length of 32 bits. If the IP Version field has value 6, the
-IP Address field SHALL have a length of 128 bits.<a href="#section-4.2.2-3.4.1" class="pilcrow">¶</a></p>
+field <span class="bcp14">SHALL</span> have a length of 32 bits. If the IP Version field has value 6, the
+IP Address field <span class="bcp14">SHALL</span> have a length of 128 bits.<a href="#section-4.2.2-3.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-4.2.2-3.5">IP Prefix Length:</dt>
             <dd style="margin-left: 1.5em" id="section-4.2.2-3.6">
-              <p id="section-4.2.2-3.6.1">Length of the IP Prefix requested, in bits. MUST be lesser or equal to the
+              <p id="section-4.2.2-3.6.1">Length of the IP Prefix requested, in bits. <span class="bcp14">MUST</span> be lesser or equal to the
 length of the IP Address field, in bits.<a href="#section-4.2.2-3.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
-<p id="section-4.2.2-4">Upon receiving the ADDRESS_REQUEST capsule, an endpoint SHOULD assign an IP
+<p id="section-4.2.2-4">Upon receiving the ADDRESS_REQUEST capsule, an endpoint <span class="bcp14">SHOULD</span> assign an IP
 address to its peer, and then respond with an ADDRESS_ASSIGN capsule to inform
 the peer of the assignment.<a href="#section-4.2.2-4" class="pilcrow">¶</a></p>
 </section>
@@ -1526,18 +1540,18 @@ IP Address Range {
 <a href="#name-ip-address-range-format" class="selfRef">IP Address Range Format</a>
             </figcaption></figure>
 </div>
-<span class="break"></span><dl class="dlParallel" id="section-4.2.3-5">
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-4.2.3-5">
             <dt id="section-4.2.3-5.1">IP Version:</dt>
             <dd style="margin-left: 1.5em" id="section-4.2.3-5.2">
-              <p id="section-4.2.3-5.2.1">IP Version of this range. MUST be either 4 or 6.<a href="#section-4.2.3-5.2.1" class="pilcrow">¶</a></p>
+              <p id="section-4.2.3-5.2.1">IP Version of this range. <span class="bcp14">MUST</span> be either 4 or 6.<a href="#section-4.2.3-5.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-4.2.3-5.3">Start IP Address and End IP Address:</dt>
             <dd style="margin-left: 1.5em" id="section-4.2.3-5.4">
               <p id="section-4.2.3-5.4.1">Inclusive start and end IP address of the advertised range. If the IP Version
-field has value 4, these fields SHALL have a length of 32 bits. If the IP
-Version field has value 6, these fields SHALL have a length of 128 bits. The
-Start IP Address MUST be lesser or equal to the End IP Address.<a href="#section-4.2.3-5.4.1" class="pilcrow">¶</a></p>
+field has value 4, these fields <span class="bcp14">SHALL</span> have a length of 32 bits. If the IP
+Version field has value 6, these fields <span class="bcp14">SHALL</span> have a length of 128 bits. The
+Start IP Address <span class="bcp14">MUST</span> be lesser or equal to the End IP Address.<a href="#section-4.2.3-5.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-4.2.3-5.5">IP Protocol:</dt>
@@ -1547,7 +1561,7 @@ the value is 0, all protocols are allowed.<a href="#section-4.2.3-5.6.1" class="
 </dd>
           <dd class="break"></dd>
 </dl>
-<p id="section-4.2.3-6">Upon receiving the ROUTE_ADVERTISEMENT capsule, an endpoint MAY start routing
+<p id="section-4.2.3-6">Upon receiving the ROUTE_ADVERTISEMENT capsule, an endpoint <span class="bcp14">MAY</span> start routing
 IP packets in these ranges to its peer.<a href="#section-4.2.3-6" class="pilcrow">¶</a></p>
 <p id="section-4.2.3-7">Each ROUTE_ADVERTISEMENT contains the full list of address ranges. If multiple
 ROUTE_ADVERTISEMENT capsules are sent in one direction, each
@@ -1559,19 +1573,19 @@ that range withdrawn.<a href="#section-4.2.3-7" class="pilcrow">¶</a></p>
 table implementations might reject them. To prevent overlap, the ranges are
 ordered; this places the burden on the sender and makes verification by the
 receiver much simpler. If an IP Address Range A precedes an IP address range B
-in the same ROUTE_ADVERTISEMENT capsule, they MUST follow these requirements:<a href="#section-4.2.3-8" class="pilcrow">¶</a></p>
+in the same ROUTE_ADVERTISEMENT capsule, they <span class="bcp14">MUST</span> follow these requirements:<a href="#section-4.2.3-8" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.2.3-9.1">IP Version of A MUST be lesser or equal than IP Version of B<a href="#section-4.2.3-9.1" class="pilcrow">¶</a>
+<li class="normal" id="section-4.2.3-9.1">IP Version of A <span class="bcp14">MUST</span> be lesser or equal than IP Version of B<a href="#section-4.2.3-9.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-4.2.3-9.2">If the IP Version of A and B are equal, the IP Protocol of A MUST be lesser
+            <li class="normal" id="section-4.2.3-9.2">If the IP Version of A and B are equal, the IP Protocol of A <span class="bcp14">MUST</span> be lesser
 or equal than IP Protocol of B.<a href="#section-4.2.3-9.2" class="pilcrow">¶</a>
 </li>
             <li class="normal" id="section-4.2.3-9.3">If the IP Version and IP Protocol of A and B are both equal, the End IP
-Address of A MUST be strictly lesser than the Start IP Address of B.<a href="#section-4.2.3-9.3" class="pilcrow">¶</a>
+Address of A <span class="bcp14">MUST</span> be strictly lesser than the Start IP Address of B.<a href="#section-4.2.3-9.3" class="pilcrow">¶</a>
 </li>
           </ul>
 <p id="section-4.2.3-10">If an endpoint received a ROUTE_ADVERTISEMENT capsule that does not meet these
-requirements, it MUST abort the stream.<a href="#section-4.2.3-10" class="pilcrow">¶</a></p>
+requirements, it <span class="bcp14">MUST</span> abort the stream.<a href="#section-4.2.3-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1595,8 +1609,8 @@ allocated: non-zero even-numbered context IDs are client-allocated, and odd-numb
 context IDs are server-allocated. The context ID namespace is tied to a given
 HTTP request: it is possible for a context ID with the same numeric value to be
 simultaneously assigned different semantics in distinct requests, potentially
-with different semantics. Context IDs MUST NOT be re-allocated within a given
-HTTP namespace but MAY be allocated in any order. Once allocated, any context ID
+with different semantics. Context IDs <span class="bcp14">MUST NOT</span> be re-allocated within a given
+HTTP namespace but <span class="bcp14">MAY</span> be allocated in any order. Once allocated, any context ID
 can be used by both client and server - only allocation carries separate
 namespaces to avoid requiring synchronization.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">Registration is the action by which an endpoint informs its peer of the
@@ -1631,12 +1645,12 @@ IP Proxying HTTP Datagram Payload {
 <a href="#name-ip-proxying-http-datagram-f" class="selfRef">IP Proxying HTTP Datagram Format</a>
         </figcaption></figure>
 </div>
-<span class="break"></span><dl class="dlParallel" id="section-6-3">
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-6-3">
         <dt id="section-6-3.1">Context ID:</dt>
         <dd style="margin-left: 1.5em" id="section-6-3.2">
           <p id="section-6-3.2.1">A variable-length integer that contains the value of the Context ID. If an
 HTTP/3 datagram which carries an unknown Context ID is received, the receiver
-SHALL either drop that datagram silently or buffer it temporarily (on the order
+<span class="bcp14">SHALL</span> either drop that datagram silently or buffer it temporarily (on the order
 of a round trip) while awaiting the registration of the corresponding Context ID.<a href="#section-6-3.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
@@ -1650,7 +1664,7 @@ field. Note that this field can be empty.<a href="#section-6-3.4.1" class="pilcr
 <p id="section-6-4">IP packets are encoded using HTTP Datagrams with the Context ID set to zero.
 When the Context ID is set to zero, the Payload field contains a full IP
 packet (from the IP Version field until the last byte of the IP Payload).<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5">Clients MAY optimistically start sending proxied IP packets before receiving
+<p id="section-6-5">Clients <span class="bcp14">MAY</span> optimistically start sending proxied IP packets before receiving
 the response to its IP proxying request, noting however that those may not be
 processed by the proxy if it responds to the request with a failure, or if the
 datagrams are received by the proxy before the request.<a href="#section-6-5" class="pilcrow">¶</a></p>
@@ -1667,7 +1681,7 @@ encapsulation but not decapsulation. In other words, the Hop Count is
 decremented right before an IP packet is transmitted in an HTTP Datagram. This
 prevents infinite loops in the presence of routing loops, and matches the
 choices in IPsec <span>[<a href="#IPSEC" class="xref">IPSEC</a>]</span>.<a href="#section-6-8" class="pilcrow">¶</a></p>
-<p id="section-6-9">Endpoints MAY implement additional filtering policies on the IP packets they
+<p id="section-6-9">Endpoints <span class="bcp14">MAY</span> implement additional filtering policies on the IP packets they
 forward.<a href="#section-6-9" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1992,11 +2006,11 @@ Payload = Encapsulated IPv4 Packet
       </h2>
 <p id="section-8-1">There are significant risks in allowing arbitrary clients to establish a tunnel
 to arbitrary servers, as that could allow bad actors to send traffic and have
-it attributed to the proxy. Proxies that support CONNECT-IP SHOULD restrict its
-use to authenticated users. The HTTP Authorization header <span>[<a href="#AUTH" class="xref">AUTH</a>]</span> MAY
+it attributed to the proxy. Proxies that support CONNECT-IP <span class="bcp14">SHOULD</span> restrict its
+use to authenticated users. The HTTP Authorization header <span>[<a href="#AUTH" class="xref">AUTH</a>]</span> <span class="bcp14">MAY</span>
 be used to authenticate clients. More complex authentication schemes are out of
 scope for this document but can be implemented using CONNECT-IP extensions.<a href="#section-8-1" class="pilcrow">¶</a></p>
-<p id="section-8-2">Since CONNECT-IP endpoints can proxy IP packets send by their peer, they SHOULD
+<p id="section-8-2">Since CONNECT-IP endpoints can proxy IP packets send by their peer, they <span class="bcp14">SHOULD</span>
 follow the guidance in <span>[<a href="#BCP38" class="xref">BCP38</a>]</span> to help prevent denial of service
 attacks.<a href="#section-8-2" class="pilcrow">¶</a></p>
 </section>
@@ -2014,7 +2028,7 @@ attacks.<a href="#section-8-2" class="pilcrow">¶</a></p>
 <p id="section-9.1-1">This document will request IANA to register "connect-ip" in the HTTP Upgrade
 Token Registry maintained at
 &lt;<span><a href="https://www.iana.org/assignments/http-upgrade-tokens">https://www.iana.org/assignments/http-upgrade-tokens</a></span>&gt;.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-9.1-2">
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-9.1-2">
           <dt id="section-9.1-2.1">Value:</dt>
           <dd style="margin-left: 1.5em" id="section-9.1-2.2">
             <p id="section-9.1-2.2.1">connect-ip<a href="#section-9.1-2.2.1" class="pilcrow">¶</a></p>
@@ -2108,7 +2122,7 @@ Capsule Types" registry created by <span>[<a href="#HTTP-DGRAM" class="xref">HTT
 <dd class="break"></dd>
 <dt id="HTTP-DGRAM">[HTTP-DGRAM]</dt>
         <dd>
-<span class="refAuthor">Schinazi, D.</span> and <span class="refAuthor">L. Pardue</span>, <span class="refTitle">"Using Datagrams with HTTP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-masque-h3-datagram-05</span>, <time datetime="2021-10-25" class="refDate">25 October 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-masque-h3-datagram-05">https://datatracker.ietf.org/doc/html/draft-ietf-masque-h3-datagram-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Schinazi, D.</span> and <span class="refAuthor">L. Pardue</span>, <span class="refTitle">"HTTP Datagrams and the Capsule Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-masque-h3-datagram-08</span>, <time datetime="2022-03-28" class="refDate">28 March 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-masque-h3-datagram-08">https://datatracker.ietf.org/doc/html/draft-ietf-masque-h3-datagram-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="QUIC">[QUIC]</dt>
         <dd>
@@ -2143,7 +2157,7 @@ Capsule Types" registry created by <span>[<a href="#HTTP-DGRAM" class="xref">HTT
 <dd class="break"></dd>
 <dt id="CONNECT-UDP">[CONNECT-UDP]</dt>
         <dd>
-<span class="refAuthor">Schinazi, D.</span>, <span class="refTitle">"UDP Proxying Support for HTTP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-masque-connect-udp-06</span>, <time datetime="2021-10-25" class="refDate">25 October 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-masque-connect-udp-06">https://datatracker.ietf.org/doc/html/draft-ietf-masque-connect-udp-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Schinazi, D.</span>, <span class="refTitle">"UDP Proxying Support for HTTP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-masque-connect-udp-08</span>, <time datetime="2022-03-21" class="refDate">21 March 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-masque-connect-udp-08">https://datatracker.ietf.org/doc/html/draft-ietf-masque-connect-udp-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="HEv2">[HEv2]</dt>
         <dd>
@@ -2186,6 +2200,11 @@ like to thank participants in those discussions for their feedback.<a href="#app
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">David Schinazi</span></div>
 <div dir="auto" class="left"><span class="org">Google LLC</span></div>
+<div dir="auto" class="left"><span class="street-address">1600 Amphitheatre Parkway</span></div>
+<div dir="auto" class="left">
+<span class="locality">Mountain View</span>, <span class="region">CA</span> <span class="postal-code">94043</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
 <div class="email">
 <span>Email:</span>
 <a href="mailto:dschinazi.ietf@gmail.com" class="email">dschinazi.ietf@gmail.com</a>

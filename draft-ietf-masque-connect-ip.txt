@@ -5,12 +5,12 @@
 MASQUE                                                     T. Pauly, Ed.
 Internet-Draft                                                Apple Inc.
 Intended status: Standards Track                             D. Schinazi
-Expires: 2 September 2022                              A. Chernyakhovsky
+Expires: 4 October 2022                                A. Chernyakhovsky
                                                               Google LLC
                                                            M. Kuehlewind
                                                            M. Westerlund
                                                                 Ericsson
-                                                            1 March 2022
+                                                            2 April 2022
 
 
                       IP Proxying Support for HTTP
@@ -23,17 +23,21 @@ Abstract
    arbitrary IP packets, without being limited to just TCP like CONNECT
    or UDP like CONNECT-UDP.
 
-Discussion Venues
+About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   Discussion of this document takes place on the Multiplexed
-   Application Substrate over QUIC Encryption Working Group mailing list
-   (masque@ietf.org), which is archived at
+   The latest revision of this draft can be found at https://ietf-wg-
+   masque.github.io/draft-ietf-masque-connect-ip/draft-ietf-masque-
+   connect-ip.html.  Status information for this document may be found
+   at https://datatracker.ietf.org/doc/draft-ietf-masque-connect-ip/.
+
+   Discussion of this document takes place on the MASQUE Working Group
+   mailing list (mailto:masque@ietf.org), which is archived at
    https://mailarchive.ietf.org/arch/browse/masque/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/tfpauly/draft-age-masque-connect-ip.
+   https://github.com/ietf-wg-masque/draft-ietf-masque-connect-ip.
 
 Status of This Memo
 
@@ -50,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 September 2022.
+   This Internet-Draft will expire on 4 October 2022.
 
 Copyright Notice
 
@@ -119,8 +123,8 @@ Table of Contents
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in BCP
-   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
    In this document, we use the term "proxy" to refer to the HTTP server
@@ -220,7 +224,6 @@ Table of Contents
       The server SHOULD send a ROUTE_ADVERTISEMENT capsule that includes
       routes for all usable resolved addresses for the requested
       hostname.
-
    ipproto:  The variable "ipproto" contains an IP protocol number, as
       defined in the "Assigned Internet Protocol Numbers" IANA registry.
       If present, it specifies that a client only wants to proxy a
@@ -255,12 +258,10 @@ Table of Contents
 
    IP Version:  IP Version of this address assignment.  MUST be either 4
       or 6.
-
    IP Address:  Assigned IP address.  If the IP Version field has value
       4, the IP Address field SHALL have a length of 32 bits.  If the IP
       Version field has value 6, the IP Address field SHALL have a
       length of 128 bits.
-
    IP Prefix Length:  The number of bits in the IP Address that are used
       to define the prefix that is being assigned.  This MUST be less
       than or equal to the length of the IP Address field, in bits.  If
@@ -298,12 +299,10 @@ Table of Contents
 
    IP Version:  IP Version of this address request.  MUST be either 4 or
       6.
-
    IP Address:  Requested IP address.  If the IP Version field has value
       4, the IP Address field SHALL have a length of 32 bits.  If the IP
       Version field has value 6, the IP Address field SHALL have a
       length of 128 bits.
-
    IP Prefix Length:  Length of the IP Prefix requested, in bits.  MUST
       be lesser or equal to the length of the IP Address field, in bits.
 
@@ -345,14 +344,12 @@ Table of Contents
                      Figure 5: IP Address Range Format
 
    IP Version:  IP Version of this range.  MUST be either 4 or 6.
-
    Start IP Address and End IP Address:  Inclusive start and end IP
       address of the advertised range.  If the IP Version field has
       value 4, these fields SHALL have a length of 32 bits.  If the IP
       Version field has value 6, these fields SHALL have a length of 128
       bits.  The Start IP Address MUST be lesser or equal to the End IP
       Address.
-
    IP Protocol:  The Internet Protocol Number for traffic that can be
       sent to this range.  If the value is 0, all protocols are allowed.
 
@@ -437,7 +434,6 @@ Table of Contents
       datagram silently or buffer it temporarily (on the order of a
       round trip) while awaiting the registration of the corresponding
       Context ID.
-
    Payload:  The payload of the datagram, whose semantics depend on
       value of the previous field.  Note that this field can be empty.
 
@@ -755,11 +751,8 @@ Table of Contents
    <https://www.iana.org/assignments/http-upgrade-tokens>.
 
    Value:  connect-ip
-
    Description:  The CONNECT-IP Protocol
-
    Expected Version Tokens:  None
-
    References:  This document
 
 9.2.  Capsule Type Registrations
@@ -804,11 +797,11 @@ Table of Contents
               h3-websockets-04>.
 
    [HTTP-DGRAM]
-              Schinazi, D. and L. Pardue, "Using Datagrams with HTTP",
-              Work in Progress, Internet-Draft, draft-ietf-masque-h3-
-              datagram-05, 25 October 2021,
+              Schinazi, D. and L. Pardue, "HTTP Datagrams and the
+              Capsule Protocol", Work in Progress, Internet-Draft,
+              draft-ietf-masque-h3-datagram-08, 28 March 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-masque-
-              h3-datagram-05>.
+              h3-datagram-08>.
 
    [QUIC]     Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
               Multiplexed and Secure Transport", RFC 9000,
@@ -846,9 +839,8 @@ Table of Contents
    [CONNECT-UDP]
               Schinazi, D., "UDP Proxying Support for HTTP", Work in
               Progress, Internet-Draft, draft-ietf-masque-connect-udp-
-              06, 25 October 2021,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-masque-
-              connect-udp-06>.
+              08, 21 March 2022, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-masque-connect-udp-08>.
 
    [HEv2]     Schinazi, D. and T. Pauly, "Happy Eyeballs Version 2:
               Better Connectivity Using Concurrency", RFC 8305,
@@ -882,6 +874,9 @@ Authors' Addresses
 
    David Schinazi
    Google LLC
+   1600 Amphitheatre Parkway
+   Mountain View, CA 94043
+   United States of America
    Email: dschinazi.ietf@gmail.com
 
 
